@@ -1,0 +1,36 @@
+{
+  "title": "Add Two Numbers",
+  "description": "Given two numbers, return their sum.",
+  "difficulty": "EASY",
+  "tags": ["math", "basic"],
+  "example": {
+    "input": "2 3",
+    "output": "5"
+  },
+  "constraints": "Numbers are integers between -1000 and 1000",
+  "hints": ["Just use the + operator"],
+  "editorial": "Simply add the two numbers using the addition operator.",
+  "testCases": [
+    {
+      "input": "2 3",
+      "output": "5"
+    },
+    {
+      "input": "10 20",
+      "output": "30"
+    },
+    {
+      "input": "-5 7",
+      "output": "2"
+    }
+  ],
+  "referenceSolutions": {
+    "javascript": "const input = require('fs').readFileSync(0, 'utf-8').trim();\nconst [a, b] = input.split(' ').map(Number);\nconsole.log(a + b);"
+  },
+  "codeSnippets": {
+    "javascript": {
+      "code": "// Read two numbers from stdin and print their sum\nconst input = require('fs').readFileSync(0, 'utf-8').trim();\nconst [a, b] = input.split(' ').map(Number);\nconsole.log(a + b);",
+      "language": "javascript"
+    }
+  }
+}

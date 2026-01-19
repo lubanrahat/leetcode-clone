@@ -1,0 +1,49 @@
+{
+  "title": "Two Sum",
+  "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\n\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.\n\nYou can return the answer in any order.",
+  "difficulty": "EASY",
+  "tags": ["array", "hash-table", "math"],
+  "example": {
+    "input": "nums = [2,7,11,15], target = 9",
+    "output": "[0,1]",
+    "explanation": "Because nums[0] + nums[1] == 9, we return [0, 1]."
+  },
+  "constraints": "2 <= nums.length <= 10^4\n-10^9 <= nums[i] <= 10^9\n-10^9 <= target <= 10^9\nOnly one valid answer exists.",
+  "hints": [
+    "Use a hash map to store the complement of each number.",
+    "Iterate through the array once for O(n) time complexity."
+  ],
+  "editorial": "The optimal solution uses a hash map to store each number's complement. As we iterate through the array, we check if the current number exists in the hash map. If it does, we've found our pair. This gives us O(n) time complexity and O(n) space complexity.\n\nAlgorithm:\n1. Create an empty hash map\n2. Iterate through each number in the array\n3. For each number, calculate complement = target - current number\n4. If complement exists in hash map, return [hashMap[complement], current index]\n5. Otherwise, store current number with its index in hash map\n6. If loop completes, return [] (though problem guarantees a solution exists)",
+  "testCases": [
+    {
+      "input": "[2,7,11,15]",
+      "output": "[0,1]"
+    },
+    {
+      "input": "[3,2,4]",
+      "output": "[1,2]"
+    },
+    {
+      "input": "[3,3]",
+      "output": "[0,1]"
+    }
+  ],
+  "referenceSolutions": {
+    "javascript": "const input = require('fs').readFileSync(0, 'utf-8').trim();\nconst nums = JSON.parse(input);\n\nfunction twoSum(nums, target) {\n  const map = new Map();\n  for (let i = 0; i < nums.length; i++) {\n    const complement = target - nums[i];\n    if (map.has(complement)) {\n      return [map.get(complement), i];\n    }\n    map.set(nums[i], i);\n  }\n  return [];\n}\n\nconsole.log(JSON.stringify(twoSum(nums, 9)));",
+    "python": "import sys, json\n\ndef two_sum(nums, target):\n    hashmap = {}\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in hashmap:\n            return [hashmap[complement], i]\n        hashmap[num] = i\n    return []\n\nnums = json.loads(sys.stdin.read().strip())\nprint(two_sum(nums, 9))"
+  },
+  "codeSnippets": {
+    "javascript": {
+      "code": "/**\n * @param {number[]} nums\n * @param {number} target\n * @return {number[]}\n */\nfunction twoSum(nums, target) {\n    // Your code here\n}",
+      "language": "javascript"
+    },
+    "python": {
+      "code": "def two_sum(nums, target):\n    # Your code here\n    pass",
+      "language": "python"
+    },
+    "java": {
+      "code": "class Solution {\n    public int[] twoSum(int[] nums, int target) {\n        // Your code here\n    }\n}",
+      "language": "java"
+    }
+  }
+}
