@@ -13,9 +13,15 @@ export async function POST(req: Request) {
   try {
     // TEMPORARY: Bypass authentication for testing
     // const userRoleResult = await currentUserRole();
+    // console.log("User role -> ",userRoleResult)
     // const user = await getCurrentUser();
+    // console.log("Get Current User -> ",user)
 
-    // if (!userRoleResult.success || userRoleResult.role !== UserRole.ADMIN) {
+    // if (
+    //   !userRoleResult.success ||
+    //   userRoleResult.role !== UserRole.ADMIN ||
+    //   !user
+    // ) {
     //   return NextResponse.json(
     //     { error: "Unauthorized - Admin access required" },
     //     { status: 403 },
@@ -143,7 +149,7 @@ export async function POST(req: Request) {
         testCases,
         referenceSolutions: JSON.stringify(referenceSolutions),
         codeSnippets,
-        userId: "00000000-0000-0000-0000-000000000001", // Test user ID
+        userId: "09983b96-4e04-43af-b931-438acf8dfe5e",
       },
     });
 

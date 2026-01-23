@@ -10,6 +10,7 @@ import {
 export const onBoardUser = async () => {
   try {
     const user = await currentUser();
+    // console.log("Current user Id -> ",user?.id);
 
     if (!user) {
       return {
@@ -19,6 +20,7 @@ export const onBoardUser = async () => {
     }
 
     const { id, firstName, lastName, imageUrl, emailAddresses } = user;
+    // console.log(id,firstName,lastName,emailAddresses)
 
     const email = emailAddresses[0]?.emailAddress;
 
@@ -75,7 +77,7 @@ export const onBoardUser = async () => {
       message: "User onboarded successfully",
       user: newUser,
     };
-  } catch (error) {
+  } catch (error: any) {
     console.error("onBoardUser error:", error);
     return {
       success: false,
@@ -87,6 +89,7 @@ export const onBoardUser = async () => {
 export const currentUserRole = async () => {
   try {
     const user = await currentUser();
+    // console.log("Current user -> ", user);
     if (!user) {
       return {
         success: false,
@@ -95,6 +98,7 @@ export const currentUserRole = async () => {
     }
 
     const { id } = user;
+    // console.log("User id -> ",id)
 
     const userRole = await prisma.user.findUnique({
       where: {
@@ -104,6 +108,7 @@ export const currentUserRole = async () => {
         role: true,
       },
     });
+    // console.log(userRole)
     return {
       success: true,
       role: userRole?.role,
@@ -130,10 +135,11 @@ export const getCurrentUser = async () => {
       },
     });
 
+    // console.log("DB User ID -> ",dbUser)
+
     return dbUser;
   } catch (error) {
     console.error("getCurrentUser error:", error);
     return null;
   }
 };
-
